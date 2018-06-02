@@ -1,0 +1,75 @@
+{
+    "$connections": {
+        "value": {
+            "itri-demo-2-connector": {
+                "connectionId": "/subscriptions/e35c484f-2d35-479f-8adb-9fe20c79394e/resourceGroups/michi-itri-demo-rg/providers/Microsoft.Web/connections/itri-demo-2-connector",
+                "connectionName": "itri-demo-2-connector",
+                "id": "/subscriptions/e35c484f-2d35-479f-8adb-9fe20c79394e/resourceGroups/michi-itri-demo-rg/providers/Microsoft.Web/customApis/itri-demo-2-connector"
+            }
+        }
+    },
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Add": {
+                "inputs": {
+                    "body": {
+                        "add": {
+                            "intA": "@triggerBody()?['arg0']",
+                            "intB": "@triggerBody()?['arg1']"
+                        }
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['itri-demo-2-connector']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/Add"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "Response": {
+                "inputs": {
+                    "body": "@body('Add')?['addResponse']",
+                    "statusCode": 200
+                },
+                "kind": "Http",
+                "runAfter": {
+                    "Add": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Response"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "manual": {
+                "inputs": {
+                    "schema": {
+                        "properties": {
+                            "arg0": {
+                                "type": "integer"
+                            },
+                            "arg1": {
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "kind": "Http",
+                "type": "Request"
+            }
+        }
+    }
+}
