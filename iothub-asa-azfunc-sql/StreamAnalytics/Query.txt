@@ -1,0 +1,15 @@
+SELECT
+    temperature as Temperature, humidity as Humidity, deviceId as DeviceId
+INTO
+    [insertSql]
+FROM
+    [iothub]
+where msgType = 'insert'
+
+SELECT
+    temperature as Temperature, humidity as Humidity, deviceId as DeviceId
+INTO
+    [azfunc]
+FROM
+    [iothub]
+where msgType = 'update'
