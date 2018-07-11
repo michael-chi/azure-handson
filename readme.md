@@ -8,3 +8,6 @@ Azure Hands-on
 
 - [Stream Analytics with Azure Function App in IoT scenario](/iothub-asa-azfunc-sql/readme.md)
 >   IoT Client sending telemetry to IoT Hub. ASA to dispatch to Azure Funciton or SQL Database based on Insert or Updates.
+
+- [Function App CI/CD with VSTS](/function-app-vsts/configure-vsts-cicd-azurefunction.md)
+>   Create a VSTS Build pipeline and auto deploy Function App with each push
