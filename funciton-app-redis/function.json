@@ -16,15 +16,6 @@
       "direction": "out"
     },
     {
-      "type": "documentDB",
-      "name": "outputDocument",
-      "databaseName": "battery",
-      "collectionName": "telemetry",
-      "createIfNotExists": false,
-      "connection": "ethyrf-registrar_DOCUMENTDB",
-      "direction": "out"
-    },
-    {
       "type": "blob",
       "name": "inputBlob",
       "path": "incontainer/{name}",
