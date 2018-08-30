@@ -1,0 +1,9 @@
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "StackExchange.Redis": "1.2.1"
+      }
+    }
+   }
+}

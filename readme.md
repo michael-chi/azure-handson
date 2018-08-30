@@ -11,3 +11,6 @@ Azure Hands-on
 
 - [Function App CI/CD with VSTS](/function-app-vsts/configure-vsts-cicd-azurefunction.md)
 >   Create a VSTS Build pipeline and auto deploy Function App with each push
+
+- [Function App Access REdis Cache](/function-app-redis/)
+>   Access Redis from Azure Functions App
