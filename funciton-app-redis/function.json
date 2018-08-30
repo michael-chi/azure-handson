@@ -14,13 +14,6 @@
       "name": "$return",
       "type": "http",
       "direction": "out"
-    },
-    {
-      "type": "blob",
-      "name": "inputBlob",
-      "path": "incontainer/{name}",
-      "connection": "AzureWebJobsDashboard",
-      "direction": "in"
     }
   ],
   "disabled": false
