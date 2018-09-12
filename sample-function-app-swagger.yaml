@@ -1,0 +1,42 @@
+swagger: '2.0'
+info:
+  title: delete20180829.azurewebsites.net
+  version: 1.0.0
+host: delete20180829.azurewebsites.net
+basePath: /
+schemes:
+  - https
+paths:
+  /api/aggregatefunc:
+    post:
+      operationId: /api/aggregatefunc/post
+      produces: ["application/json"]
+      consumes: []
+      parameters:
+        - name: userId
+          in: query
+          required: true
+          type: integer
+          format: int32
+        - name: ratingId
+          in: query
+          required: true
+          type: integer
+          format: int32
+      description:
+        Replace with Operation Object
+      responses:
+        '200':
+          description: Success operation
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: name of the object
+                value:
+                  type: string
+                  description: name of the object
+
