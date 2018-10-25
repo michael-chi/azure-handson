@@ -18,7 +18,7 @@ CosmosDB Binding.
 Create Azure Function
 =====================
 
--   Create an empty C\# Azure Function App in Azure
+-   Create an empty JavaScript Azure Function App in Azure
 
 ![](.//media/image1.png)
 -   Go to "Application Settings", add a CosmosDB connection setting.
