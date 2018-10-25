@@ -65,8 +65,9 @@ Create Azure DevOps project
     <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.0.1" />
   </ItemGroup>
 </Project>
-
 ```
+-   You can get Binding extension assembly and version infromation from here: <https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need>
+
 Create Build Pipeline
 =====================
 
