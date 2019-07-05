@@ -1,0 +1,21 @@
+policies:
+    - name: tag-newly-created-vms
+      resource: azure.vm
+      mode:
+        type: azure-event-grid
+        events: [
+          {
+            resourceProvider: "Microsoft.Compute/virtualMachines",
+            event: "write"
+          }
+          ]
+      filters:
+        - type: metric
+          metric: Percentage CPU
+          aggregation: average
+          op: lt
+          threshold: 75
+          timeframe: 1      
+      actions:
+        - type: auto-tag-user
+          tag: CreatorEmail
