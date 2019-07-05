@@ -9,6 +9,8 @@ Table of Contents
 
 [Validate installation](#Validation)
 
+[Sample Policies](#Sample-Policies)
+
 
 # Installation
 
@@ -141,3 +143,9 @@ custodian run --output-dir ./output policy.yaml
 ```
 
 -   This will take around 5 minutes to have Function successfully deployed. Once deployed, wait until it gets triggeted or manually execute it via portal. Stopped Virutal Machines will be tagged.
+
+# Sample Policies
+
+-   [Tag Stopped VMs](policies/tag-stopped-vm.yaml)
+
+-   [Event Grid Sample](policies/event-grid.yaml)
