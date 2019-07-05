@@ -146,6 +146,10 @@ custodian run --output-dir ./output policy.yaml
 
 # Sample Policies
 
+##  Azure Function Samples
+
 -   [Tag Stopped VMs](policies/tag-stopped-vm.yaml)
 
--   [Event Grid Sample](policies/event-grid.yaml)
+##  Event Grid Samples
+
+-   [Tag VMs by CPU utlization](policies/event-grid.yaml)
