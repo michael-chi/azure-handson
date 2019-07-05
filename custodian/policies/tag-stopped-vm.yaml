@@ -1,0 +1,27 @@
+policies:
+  - name: stopped-vm
+    mode:
+        type: azure-periodic
+        schedule: '0 0 * * * *'
+        provision-options:
+          servicePlan:
+            name: functionshost
+            location: East Asia
+            skuTier: Standard
+            skuName: S1
+          appInsights:
+            location: East Asia
+          storageAccount:
+            name: sampleaccount
+            location: East Asia
+    resource: azure.vm
+    filters:
+      - type: instance-view
+        key: statuses[].code
+        op: not-in
+        value_type: swap
+        value: "PowerState/running"
+    actions:
+      - type: tag
+        tag: "tag-by-function"
+        value: "true"

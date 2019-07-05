@@ -1,5 +1,16 @@
-Installation
-============
+Table of Contents
+=================
+
+[Installation](#Installation)
+
+-   [Install Azure Cli](#Install-Az-Cli)
+
+-   [Install Custodian and Azure plugin](#Install-Custodian)
+
+[Validate installation](#Validation)
+
+
+# Installation
 
 ## Install Az Cli
 
@@ -55,4 +66,78 @@ pip install -e cloud-custodian/.
 pip install -e cloud-custodian/tools/c7n_azure/.
 ```
 
+# Validation
+## Periodically tag Stopped VMs
 
+To validate the installation, we want to deploy a simple policy to Azure Function and have Custodian periodically tag stopped VMs in our subscription
+
+-   In order to have this work, first we need to set environment variables
+
+```shell
+# select correct subscription
+az account set -s "[YOUR SUBSCRIPTION NAME]"
+
+# create service principal
+az ad sp create-for-rbac --name [SP NAME] --password [SP PASSWORD]
+```
+
+-   You'll see below output
+
+```json
+{
+  "appId": appid,
+  "displayName": name,
+  "name": name,
+  "password": password,
+  "tenant": guid
+}
+```
+
+-   In your Ubuntu machine, set below environment vaeriables. Custodian automatically capture these variables during deployment.
+
+```shell
+export AZURE_TENANT_ID=tenant
+export AZURE_SUBSCRIPTION_ID=subscriptionId
+export AZURE_CLIENT_ID=appId
+export AZURE_CLIENT_SECRET=password
+```
+
+-   Create our policy file
+
+```yaml
+policies:
+  - name: stopped-vm
+    mode:
+        type: azure-periodic
+        schedule: '0 * * * * *'
+        provision-options:
+          servicePlan:
+            name: functionshost
+            location: East Asia
+            skuTier: Standard
+            skuName: S1
+          appInsights:
+            location: East Asia
+          storageAccount:
+            name: sampleaccount
+            location: East Asia
+    resource: azure.vm
+    filters:
+      - type: instance-view
+        key: statuses[].code
+        op: not-in
+        value_type: swap
+        value: "PowerState/running"
+    actions:
+      - type: tag
+        tag: "tag-by-function"
+        value: "true"
+```
+
+-   Run below command to deploy
+
+```shell
+custodian run --output-dir ./output policy.yaml
+```
+
+-   This will take around 5 minutes to have Function successfully deployed. Once deployed, wait until it gets triggeted or manually execute it via portal. Stopped Virutal Machines will be tagged.
