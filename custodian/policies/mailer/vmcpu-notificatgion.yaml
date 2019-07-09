@@ -1,0 +1,31 @@
+policies:
+    - name: tag-newly-created-vms
+      resource: azure.vm
+      mode:
+        type: azure-event-grid
+        events: [
+          {
+            resourceProvider: "Microsoft.Compute/virtualMachines",
+            event: "write"
+          }
+          ]
+      filters:
+        - type: metric
+          metric: Percentage CPU
+          aggregation: average
+          op: lt
+          threshold: 75
+          timeframe: 1
+      actions:
+        - type: tag
+          tag: "verify-policy-runs-tag"
+          value: "true"
+        - type: notify
+          template: default
+          priority_header: '2'
+          subject: Low CPU Utalization
+          to:
+            - michi@microsoft.com
+          transport:
+            type: asq
+            queue: https://<STORAGE_ACCOUNT>.queue.core.windows.net/<QUEUE_NAME>

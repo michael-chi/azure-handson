@@ -153,3 +153,9 @@ custodian run --output-dir ./output policy.yaml
 ##  Event Grid Samples
 
 -   [Tag VMs by CPU utlization](policies/event-grid.yaml)
+
+##  Mailer Samples
+
+- When CPU utlization is low, send an email notification to specific email address 
+  - [Mailer configureation file](policies/mailer/mailer.yaml)
+  - [Policy Yaml file](policies/mailer/vmcpu-notificatgion.yaml)

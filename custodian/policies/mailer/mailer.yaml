@@ -1,0 +1,6 @@
+queue_url: asq://<STORAGE_ACCOUNT>.queue.core.windows.net/<QUEUE_NAME>
+from_address: michi@microsoft.com
+sendgrid_api_key: <SEND_GRID_API_KEY>
+function_properties:
+  servicePlan:
+    name: 'testmailer1'
