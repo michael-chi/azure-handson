@@ -3,4 +3,10 @@ from_address: michi@microsoft.com
 sendgrid_api_key: <SEND_GRID_API_KEY>
 function_properties:
   servicePlan:
-    name: 'testmailer1'
+    name: custodian
+    location: East Asia
+    resourceGroupName: custodian-rg
+
+
+
+
