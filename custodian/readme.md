@@ -169,6 +169,6 @@ export AZURE_CLIENT_SECRET=xxx
   - You need to assign Storage account's "Storage Queue Data Contributor" role to the service principal
   - Configure mailer then deploy policy to Azure Function
 ```
-c7n-mailer --config mailer.yml 
 custodian run --output-dir ./output ./vmcpu-notificatgion.yaml
+c7n-mailer --config mailer.yml 
 ```
