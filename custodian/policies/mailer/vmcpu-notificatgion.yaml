@@ -2,13 +2,21 @@ policies:
     - name: tag-newly-created-vms
       resource: azure.vm
       mode:
-        type: azure-event-grid
-        events: [
-          {
-            resourceProvider: "Microsoft.Compute/virtualMachines",
-            event: "write"
-          }
-          ]
+        type: azure-periodic
+        schedule: '0 * * * * *'
+        provision-options:
+          servicePlan:
+            name: custodian
+            location: East Asia
+            resourceGroupName: custodian-rg
+          storageAccount:
+            name: <STORAGE_ACCOUNT>
+            location: East Asia
+            resourceGroupName: custodian-rg
+          appInsigts:
+            name: custodian
+            location: East Asia
+            resourceGroupName: custodian-rg
       filters:
         - type: metric
           metric: Percentage CPU
