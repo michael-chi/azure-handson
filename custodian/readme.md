@@ -159,8 +159,15 @@ custodian run --output-dir ./output policy.yaml
 - When CPU utlization is low, send an email notification to specific email address 
   - [Mailer configureation file](policies/mailer/mailer.yaml)
   - [Policy Yaml file](policies/mailer/vmcpu-notificatgion.yaml)
-  - To run this sample
-    - Configure mailer then deploy policy to Azure Function
+  - To run this sample, You must first create a Service Principal and run below commands to set environment varibles
+```
+export AZURE_TENANT_ID=xxx
+export AZURE_SUBSCRIPTION_ID=xxx
+export AZURE_CLIENT_ID=xxx
+export AZURE_CLIENT_SECRET=xxx
+```
+  - You need to assign Storage account's "Storage Queue Data Contributor" role to the service principal
+  - Configure mailer then deploy policy to Azure Function
 ```
 c7n-mailer --config mailer.yml 
 custodian run --output-dir ./output ./vmcpu-notificatgion.yaml
