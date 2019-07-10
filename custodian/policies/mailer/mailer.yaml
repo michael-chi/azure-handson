@@ -5,8 +5,4 @@ function_properties:
   servicePlan:
     name: custodian
     location: East Asia
-    resourceGroupName: custodian-rg
-
-
-
-
+    resourceGroupName: <RESOURCE_GROUP_NAME>
