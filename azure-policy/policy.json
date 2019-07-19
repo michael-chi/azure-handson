@@ -1,0 +1,99 @@
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.Sql/servers"
+    },
+    "then": {
+      "effect": "DeployIfNotExists",
+      "details": {
+        "type": "Microsoft.Sql/servers",
+        "name": "Default",
+        "existenceCondition": {
+          "allOf": [
+            {
+              "field": "Microsoft.Sql/servers/firewallRules/startIpAddress",
+              "exists": false
+            },
+            {
+              "field": "Microsoft.Sql/servers/firewallRules/endIpAddress",
+              "exists": false
+            }
+          ]
+        },
+        "roleDefinitionIds": [
+          "/subscriptions/<SUBSCRIPTION_ID>/providers/Microsoft.Authorization/roleDefinitions/<ROLE_ID>",
+          "/providers/microsoft.authorization/roleDefinitions/<ROLE_ID>"
+        ],
+        "deployment": {
+          "properties": {
+            "mode": "incremental",
+            "template": {
+              "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+              "contentVersion": "1.0.0.0",
+              "parameters": {
+                "serverName": {
+                  "type": "String"
+                },
+                "vnetId": {
+                  "defaultValue": "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Network/virtualNetworks/<VNET_NAME>",
+                  "type": "String"
+                }
+              },
+              "variables": {},
+              "resources": [
+                {
+                  "type": "Microsoft.Sql/servers/firewallRules",
+                  "apiVersion": "2015-05-01-preview",
+                  "name": "[concat(parameters('serverName'), '/All')]",
+                  "dependsOn": [],
+                  "properties": {
+                    "startIpAddress": "<START_IP>",
+                    "endIpAddress": "<END_IP>"
+                  }
+                },
+                {
+                  "type": "Microsoft.Sql/servers/firewallRules",
+                  "apiVersion": "2015-05-01-preview",
+                  "name": "[concat(parameters('serverName'), '/AllowAllWindowsAzureIps')]",
+                  "dependsOn": [],
+                  "properties": {
+                    "startIpAddress": "<START_IP>",
+                    "endIpAddress": "<END_IP>"
+                  }
+                },
+                {
+                  "type": "Microsoft.Sql/servers/firewallRules",
+                  "apiVersion": "2015-05-01-preview",
+                  "name": "[concat(parameters('serverName'), '/AllowWorkstations')]",
+                  "dependsOn": [],
+                  "properties": {
+                    "startIpAddress": "<START_IP>",
+                    "endIpAddress": "<END_IP>"
+                  }
+                },
+                {
+                  "type": "Microsoft.Sql/servers/virtualNetworkRules",
+                  "apiVersion": "2015-05-01-preview",
+                  "name": "[concat(parameters('serverName'), '/vnetRule001')]",
+                  "dependsOn": [],
+                  "properties": {
+                    "virtualNetworkSubnetId": "[concat(parameters('vnetId'), '/subnets/default')]",
+                    "ignoreMissingVnetServiceEndpoint": true
+                  }
+                }
+              ]
+            },
+            "parameters": {
+              "serverName": {
+                "value": "[field('name')]"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {}
+}

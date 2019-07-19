@@ -1,0 +1,7 @@
+{
+    "vnetId": 
+    {
+        "value": "/subscriptions/<SUBSCRIPTION_DI>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Network/virtualNetworks/<VNET_NAME>",
+        "type": "String"
+    }
+ }
