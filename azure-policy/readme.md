@@ -24,7 +24,7 @@ az account set -s "<SUBSCRIPTION_NAME>"
 az role definition list --name Contributor
 ```
 
--   Output should look similar to below. Note down <Role Id>, we need this Id later
+-   Output should look similar to below. Note down \<Role Id\>, we need this Id later
 
 ```json
 [
