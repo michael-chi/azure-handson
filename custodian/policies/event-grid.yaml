@@ -1,3 +1,4 @@
+# Auto tag stopped VMs
 policies:
     - name: tag-newly-created-vms
       resource: azure.vm
@@ -10,12 +11,11 @@ policies:
           }
           ]
       filters:
-        - type: metric
-          metric: Percentage CPU
-          aggregation: average
-          op: lt
-          threshold: 75
-          timeframe: 1      
+        - type: instance-view
+          key: statuses[].code
+          op: not-in
+          value_type: swap
+          value: "PowerState/running"
       actions:
         - type: auto-tag-user
           tag: CreatorEmail
