@@ -1,0 +1,36 @@
+policies:
+  - name: tag-newly-created-vms
+    resource: azure.vm
+    mode:
+      type: azure-periodic
+      schedule: '0 * * * * *'
+      provision-options:
+        servicePlan:
+          name: custodianserviceplan
+          location: East Asia
+          resourceGroupName: custodian-rg
+        storageAccount:
+          name: custodianstorage
+          location: East Asia
+          resourceGroupName: custodian-rg
+        appInsigts:
+          name: custodianappinsights
+          location: East Asia
+          resourceGroupName: custodian-rg
+    filters:
+      - type: metric
+        metric: Percentage CPU
+        aggregation: average
+        op: lt
+        threshold: 30
+        timeframe: 1
+    actions:
+      - type: notify
+        template: default
+        priority_header: '2'
+        subject: Notify Low CPU Utalization
+        to:
+          - <ADMIN_EMAIL>
+        transport:
+          type: asq
+          queue: https://custodianstorage.queue.core.windows.net/lowcpunotify
