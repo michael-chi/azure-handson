@@ -1,0 +1,1 @@
+https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates
