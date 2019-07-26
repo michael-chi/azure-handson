@@ -27,7 +27,9 @@ In this tutorial, I am simulating an IoT solution provider, which sell devices t
 
 Azure Device Provisioning Service is a powerful to support this scenario. Image below architecture.
 
-    [root certificate] -> [intermediate certificate for customer A] -> [device certificates]
+    [root certificate] -> [intermediate certificate for customer A] -> [company A device certificates...]
+
+                       -> [intermediate certificate for customer B] -> [company B device certificates...]
 
 Devices with device certificates signed by intermediate certificate will automatically be assigned to an IoT Hub which has its root certificates associated with.
 
