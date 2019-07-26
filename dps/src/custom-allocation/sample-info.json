@@ -1,0 +1,47 @@
+{
+    "enrollmentGroup": {
+        "enrollmentGroupId": "dpseastasia",
+        "attestation": {
+            "type": "x509",
+            "x509": {
+                "caReferences": {
+                    "primary": "dps20190726chain",
+                    "secondary": ""
+                }
+            }
+        },
+        "capabilities": {
+            "iotEdge": false
+        },
+        "etag": "\"11111111-0000-1111-0000-11111111111\"",
+        "provisioningStatus": "enabled",
+        "reprovisionPolicy": {
+            "updateHubAssignment": true,
+            "migrateDeviceData": true
+        },
+        "createdDateTimeUtc": "2019-07-26T03:28:27.9772758Z",
+        "lastUpdatedDateTimeUtc": "2019-07-26T07:33:36.8270493Z",
+        "allocationPolicy": "custom",
+        "iotHubs": [
+            "michi-dps-eastasia-001.azure-devices.net",
+            "michi-dps-sea-001.azure-devices.net"
+        ],
+        "customAllocationDefinition": {
+            "webhookUrl": "https://xxxxxxxxxxx.azurewebsites.net/api/dps-id-allocation?xxxxxxxxxxxxxxxx",
+            "apiVersion": "2019-03-31"
+        }
+    },
+    "deviceRuntimeContext": {
+        "registrationId": "deviceid001",
+        "x509": {
+            "clientCertificate":"...",
+            "chainElements": [
+                "..."
+            ]
+        }
+    },
+    "linkedHubs": [
+        "michi-dps-eastasia-001.azure-devices.net",
+        "michi-dps-sea-001.azure-devices.net"
+    ]
+}

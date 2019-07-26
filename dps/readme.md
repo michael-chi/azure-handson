@@ -1,5 +1,5 @@
-Table of Content
-================
+Table of Contents
+=================
 
 [Overview](#overview)
 
@@ -18,6 +18,9 @@ Table of Content
 [Hardware Manufacturer Steps](#hardware-manufacturer-steps)
 
 - [Codes](#codes)
+
+[Custom Assign Policy](#custom-assign-policy)
+
 
 [References](#references)
 
@@ -223,6 +226,12 @@ DeviceClient OpenAsync.
 DeviceClient SendEventAsync.
 DeviceClient CloseAsync.
 ```
+
+## Custom Assign Policy
+
+You may also want to have your own logic to assign device to IoT Hub. DPS allows you to write an Azure Function to assign device by custom logic.
+
+A sample function can be found [here](./src/custom-allocation/readme.md)
 
 ## References
 #### Group Registration
