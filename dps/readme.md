@@ -234,7 +234,9 @@ You may also want to have your own logic to assign device to IoT Hub. DPS allows
 A sample function can be found [here](./src/custom-allocation/readme.md)
 
 ## References
-#### Group Registration
+
+- [About IoT Hub DPS - Manufacturing Steps](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/iot-dps/about-iot-dps.md#manufacturing-step)
+
 - [IoT Hub CA Certificate overview](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
 
 - [Provision Device to IoT Hub tutorial](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/iot-dps/tutorial-provision-device-to-hub.md)
