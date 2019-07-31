@@ -39,8 +39,8 @@ namespace SymmetricKeySample
 
         //These are the two keys that belong to your enrollment group. 
         // Leave them blank if you want to try this sample for an individual enrollment instead
-        private const string enrollmentGroupPrimaryKey = "";
-        private const string enrollmentGroupSecondaryKey = "";
+        private const string enrollmentGroupPrimaryKey = "iFoWy9/at+6R5LdF8wgOfiD6mBYBhon0f3KJB5GxwBftdMvFAUVMin1PASmLY/mC4Aq3ruuGHEajgCxFevgl9g==";
+        private const string enrollmentGroupSecondaryKey = "a/Xut8CCDRK832wOdVXsMm+zPUMEylhpUq24wMErfhaE2YppfD3yVoDHTs0ih82CTxqHfyAQfNcRnmlN7jjUFQ==";
 
         //registration id for enrollment groups can be chosen arbitrarily and do not require any portal setup. 
         //The chosen value will become the provisioned device's device id.

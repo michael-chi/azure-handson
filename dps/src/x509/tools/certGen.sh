@@ -1,4 +1,3 @@
-
 ## Copyright (c) Microsoft. All rights reserved.
 ## Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
@@ -325,25 +324,10 @@ function generate_verification_certificate()
     rm -f ./private/verification-code.key.pem
     rm -f ./certs/verification-code.cert.pem
     generate_leaf_certificate "${1}" "verification-code" \
-                              ${intermediate_ca_dir} ${intermediate_ca_password} \
-                              ${openssl_intermediate_config_file}
-}
-###############################################################################
-# Generates a certificate for verification, chained directly to the root.
-###############################################################################
-function generate_intermediate_verification_certificate()
-{
-    if [$# -ne 1]; then
-        echo "Usage: <subjectName>"
-        exit 1
-    fi
-
-    rm -f ./private/verification-code.key.pem
-    rm -f ./certs/verification-code.cert.pem
-    generate_leaf_certificate "${1}" "verification-code" \
                               ${root_ca_dir} ${root_ca_password} \
                               ${openssl_root_config_file}
 }
+
 ###############################################################################
 # Generates a certificate for a device, chained to the intermediate.
 ###############################################################################
@@ -389,18 +373,10 @@ function generate_edge_device_certificate()
                                        "v3_intermediate_ca" "Edge Device"
 }
 
-
-
-echo "========================"
-echo "${1}"
-echo "========================"
-
 if [ "${1}" == "create_root_and_intermediate" ]; then
     initial_cert_generation
 elif [ "${1}" == "create_verification_certificate" ]; then
     generate_verification_certificate "${2}"
-elif [ "${1}" == "create_intermediate_verification_certificate" ]; then
-    generate_intermediate_verification_certificate "${2}"
 elif [ "${1}" == "create_device_certificate" ]; then
     generate_device_certificate "${2}"
 elif [ "${1}" == "create_edge_device_certificate" ]; then

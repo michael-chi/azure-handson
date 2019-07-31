@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Devices.Provisioning.Client.Samples
         // - pass this value as a command-prompt argument
         // - set the DPS_IDSCOPE environment variable 
         // - create a launchSettings.json (see launchSettings.json.template) containing the variable
-        private static string s_idScope = "0ne0006C5C5";//Environment.GetEnvironmentVariable("DPS_IDSCOPE");
+        private static string s_idScope = "0ne0006D45C";//Environment.GetEnvironmentVariable("DPS_IDSCOPE");
 
         // In your Device Provisioning Service please go to "Manage enrollments" and select "Individual Enrollments".
         // Select "Add individual enrollment" then fill in the following:
